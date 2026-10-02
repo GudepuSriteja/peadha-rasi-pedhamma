@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Peddha rasi pedhamma</title>
+<title>పేదరాశి పెద్దమ్మ</title>
 <style>
 *{box-sizing:border-box}
 body{margin:0;min-height:100vh;display:grid;place-items:center;background:#0d0d0f;color:#f5f5f5;font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif}
@@ -23,7 +23,7 @@ button:hover{transform:translateY(-1px)}
 </head>
 <body>
 <div class="card">
-  <div class="small" id="small">Peddha rasi pedhamma...</div>
+  <div class="small" id="small">పేదరాశి పెద్దమ్మ...</div>
   <div id="text">Is it morning or night where you are opening this?</div>
   <div class="choices" id="choices">
     <button id="morning">☀️ Good morning</button>
@@ -43,9 +43,9 @@ function show(type){
   choices.style.display='none';
   small.textContent='';
   if(type==='morning'){
-    text.innerHTML='<img class="photo" src="'+morningPhoto+'" alt="Morning"><div class="message">Good morning, peddha rasi pedhamma ☀️</div><div class="sub">Have a great day :)</div>';
+    text.innerHTML='<img class="photo" src="'+morningPhoto+'" alt="Morning"><div class="message">Good morning, పేదరాశి పెద్దమ్మ ☀️</div><div class="sub">Have a great day :)</div>';
   }else{
-    text.innerHTML='<img class="photo" src="'+nightPhoto+'" alt="Night"><div class="message">Good night, peddha rasi pedhamma 🌙</div><div class="sub">Sleep well :)</div>';
+    text.innerHTML='<img class="photo" src="'+nightPhoto+'" alt="Night"><div class="message">Good night, పేదరాశి పెద్దమ్మ 🌙</div><div class="sub">Sleep well :)</div>';
   }
 }
 document.getElementById('morning').onclick=()=>show('morning');
