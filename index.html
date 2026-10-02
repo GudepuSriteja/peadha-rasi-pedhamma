@@ -40,6 +40,7 @@ const morningPhoto='data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDABUOE
 const nightPhoto='night.jpg';
 
 function imageUrl(dataUrl){
+  if(!dataUrl.startsWith('data:')) return dataUrl;
   if(dataUrl.startsWith('data:image/svg+xml')) return dataUrl;
   const base64=dataUrl.split(',')[1];
   const binary=atob(base64);
