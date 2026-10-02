@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Hmm...</title>
+<style>
+*{box-sizing:border-box} body{margin:0;min-height:100vh;display:grid;place-items:center;background:#0d0d0f;color:#f5f5f5;font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;overflow:hidden}
+.card{text-align:center;padding:28px;max-width:520px}
+.small{color:#888;font-size:14px;margin-bottom:22px}
+#text{font-size:28px;line-height:1.35;min-height:150px;display:grid;place-items:center}
+.big{font-size:52px;font-weight:800;letter-spacing:-1px;margin:12px 0}
+button{margin-top:18px;border:0;border-radius:999px;padding:12px 20px;font-size:16px;cursor:pointer;background:#fff;color:#111}
+.hidden{display:none}
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="small" id="small">loading...</div>
+  <div id="text"></div>
+  <button id="btn" class="hidden">okay bye 😂</button>
+</div>
+<script>
+const small=document.getElementById('small'), text=document.getElementById('text'), btn=document.getElementById('btn');
+const lines=[
+ ['Checking what to call you...','cute ❌'],
+ ['Trying again...','sweet ❌'],
+ ['One last attempt...','innocent ❌']
+];
+let i=0;
+function next(){
+  if(i<lines.length){
+    small.textContent=lines[i][0];
+    text.textContent=lines[i][1];
+    i++;
+    setTimeout(next,900);
+  }else{
+    small.textContent='Final result:';
+    text.innerHTML='<div class="big">PEDDHA RASI PEDHAMMA 😂</div>';
+    btn.classList.remove('hidden');
+  }
+}
+btn.onclick=()=>{text.textContent='Now go suggest me some good movies 😌';btn.remove();small.textContent='';};
+setTimeout(next,700);
+</script>
+</body>
+</html>
