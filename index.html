@@ -3,140 +3,94 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>For your movie recommendations</title>
+<title>Things we haven't done yet</title>
 <style>
 *{box-sizing:border-box}
-body{margin:0;min-height:100vh;display:grid;place-items:center;background:#101014;color:#f5f5f5;font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
-.card{width:min(92vw,600px);padding:34px 24px;text-align:center}
+body{margin:0;min-height:100vh;background:#101014;color:#f5f5f5;font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+.wrap{width:min(92vw,680px);margin:auto;padding:54px 20px 70px}
 .top{font-size:13px;color:#777;margin-bottom:18px}
-h1{font-size:clamp(31px,7vw,46px);line-height:1.08;margin:0 0 12px;letter-spacing:-1.3px}
-.intro{color:#999;font-size:16px;line-height:1.5;max-width:470px;margin:0 auto 30px}
-.progress{height:2px;background:#29292e;border-radius:10px;max-width:400px;margin:0 auto 30px}
-#bar{height:100%;width:25%;background:#eee;transition:.25s}
-.question{font-size:23px;font-weight:700;margin:20px 0 18px}
-.options{display:grid;gap:10px}
-button{width:100%;border:1px solid #303036;background:#18181d;color:#f5f5f5;border-radius:13px;padding:15px 16px;font-size:16px;cursor:pointer;transition:.15s}
-button:hover{transform:translateY(-2px);background:#222228}
-.result{display:none}
-.result .top{margin-bottom:12px}
-.result h2{font-size:30px;margin:0 0 12px}
-.result-intro{color:#aaa;line-height:1.55;margin:0 auto 24px;max-width:480px}
-.movie{padding:17px 18px;margin:10px 0;background:#17171c;border:1px solid #29292f;border-radius:15px;text-align:left}
-.movie strong{font-size:18px}
-.movie span{display:block;color:#999;font-size:14px;line-height:1.5;margin-top:5px}
-.bottom{color:#777;font-size:13px;line-height:1.5;margin:25px auto 18px}
-#again{margin-top:2px}
-#secret{margin-top:25px;color:#444;font-size:12px;cursor:pointer}
+h1{font-size:clamp(35px,8vw,54px);line-height:1.02;letter-spacing:-1.8px;margin:0 0 14px}
+.intro{color:#999;line-height:1.55;font-size:16px;max-width:520px;margin:0 0 32px}
+.list{display:grid;gap:12px}
+.item{background:#17171c;border:1px solid #29292f;border-radius:16px;padding:18px 18px;text-align:left;cursor:pointer;transition:.18s}
+.item:hover{transform:translateY(-2px);border-color:#4a4a52}
+.name{font-size:19px;font-weight:700}
+.status{font-size:13px;color:#85858d;margin-top:5px;line-height:1.45}
+.detail{display:none;color:#aaa;font-size:14px;line-height:1.5;margin-top:12px;padding-top:12px;border-top:1px solid #29292f}
+.item.open .detail{display:block}
+.item.open{border-color:#505058}
+.footer{margin-top:30px;color:#666;font-size:13px;line-height:1.5;text-align:center}
 </style>
 </head>
 <body>
-<main class="card">
+<div class="wrap">
+  <div class="top">I was making a list anyway.</div>
+  <h1>Things we haven't done yet</h1>
+  <p class="intro">You said you have other plans. Fair enough. So I'm not deciding anything. This is just the list I somehow ended up making.</p>
 
-<section id="quiz">
-  <div class="top">Okay, one small test.</div>
-  <h1>What kind of movie are you looking for?</h1>
-  <p class="intro">I know you've already given me enough movie recommendations, but I need to know what actually goes on in that head of yours.</p>
-  <div class="progress"><div id="bar"></div></div>
-  <div id="question" class="question"></div>
-  <div id="options" class="options"></div>
-</section>
+  <div class="list">
+    <div class="item">
+      <div class="name">Chess</div>
+      <div class="status">Still pending.</div>
+      <div class="detail">I still need to find out if you're actually good or if you just have confidence.</div>
+    </div>
 
-<section id="result" class="result">
-  <div class="top">Okay. I think I got you.</div>
-  <h2 id="headline"></h2>
-  <p id="analysis" class="result-intro"></p>
-  <div id="movies"></div>
-  <p class="bottom">Pick one. Watch it. Then tell me if I got it completely wrong.</p>
-  <button id="again">No, do it again</button>
-  <div id="secret">don't click this</div>
-</section>
+    <div class="item">
+      <div class="name">Explore a new café</div>
+      <div class="status">You probably know more places than me.</div>
+      <div class="detail">You pick the café. I'll complain about the price and then order something anyway.</div>
+    </div>
 
-</main>
+    <div class="item">
+      <div class="name">ORR night ride</div>
+      <div class="status">Still on my list.</div>
+      <div class="detail">No complicated plan. Bike, music, empty roads and food somewhere afterwards.</div>
+    </div>
+
+    <div class="item">
+      <div class="name">Cycling on the Solar Track</div>
+      <div class="status">You already rejected this one.</div>
+      <div class="detail">I'm keeping it here purely because I refuse to delete a perfectly good idea after one rejection.</div>
+    </div>
+
+    <div class="item">
+      <div class="name">Khajaguda Hills</div>
+      <div class="status">Still pending.</div>
+      <div class="detail">Sunset, sitting around and absolutely no need to pretend we have an itinerary.</div>
+    </div>
+
+    <div class="item">
+      <div class="name">Nehru Zoo Park</div>
+      <div class="status">We haven't done this one.</div>
+      <div class="detail">This one is objectively better than arguing about where to go for three hours.</div>
+    </div>
+
+    <div class="item">
+      <div class="name">Kokapet Lakeview</div>
+      <div class="status">You said you have other plans.</div>
+      <div class="detail">So this is officially under review by the peddhamma committee.</div>
+    </div>
+
+    <div class="item">
+      <div class="name">Golconda at sunset</div>
+      <div class="status">Not discussed yet.</div>
+      <div class="detail">This one might actually survive the approval process.</div>
+    </div>
+
+    <div class="item">
+      <div class="name">Durgam Cheruvu + something to eat</div>
+      <div class="status">Simple one.</div>
+      <div class="detail">Walk around, talk nonsense, find food. That's basically the entire plan.</div>
+    </div>
+  </div>
+
+  <div class="footer">And yes, I'm aware this is becoming a suspiciously long list.</div>
+</div>
 
 <script>
-const questions=[
- {q:"What do you want the movie to leave you with?",a:["Warm and happy","A little emotional","Thinking about it afterwards","No idea, surprise me"]},
- {q:"Which one gets you more?",a:["People being honest about what they feel","Family stuff","Two people slowly getting close","Just a really good story"]},
- {q:"How emotional is too emotional?",a:["I'm fine","Depends on the movie","I can handle it","Why would I want less emotion?"]},
- {q:"What makes you say 'that was actually good'?",a:["It felt real","The characters","The ending","I can't explain it, it just did"]},
-];
-
-let step=0,answers=[];
-const q=document.getElementById("question");
-const options=document.getElementById("options");
-const bar=document.getElementById("bar");
-
-function render(){
-  q.textContent=questions[step].q;
-  options.innerHTML="";
-  questions[step].a.forEach(answer=>{
-    const b=document.createElement("button");
-    b.textContent=answer;
-    b.onclick=()=>choose(answer);
-    options.appendChild(b);
-  });
-  bar.style.width=((step+1)/questions.length*100)+"%";
-}
-function choose(answer){
-  answers.push(answer.toLowerCase());
-  step++;
-  step<questions.length ? render() : finish();
-}
-function finish(){
-  document.getElementById("quiz").style.display="none";
-  document.getElementById("result").style.display="block";
-
-  const a=answers.join(" ");
-  let headline,analysis,movies;
-
-  if(a.includes("honest")||a.includes("real")||a.includes("emotion")){
-    headline="Yeah. This makes sense.";
-    analysis="You seem to like movies where people actually say what they feel instead of everything being unnecessarily complicated. So I'd go with these.";
-    movies=[
-      ["About Time","There's romance, but the family side of it is what makes it hit differently."],
-      ["The Lunchbox","Very simple story. Very normal people. Somehow you end up caring a lot."],
-      ["Past Lives","Quiet movie, complicated feelings. You'll probably think about it after."]
-    ];
-  }else if(a.includes("family")||a.includes("characters")){
-    headline="Okay, I've got a few for you.";
-    analysis="You seem to care more about the people in the story than whether the movie is trying to be impressive.";
-    movies=[
-      ["Little Miss Sunshine","A completely dysfunctional family that somehow feels very real."],
-      ["The Intouchables","Funny, warm and built around two people who genuinely change each other."],
-      ["About Time","Yes, it's a love story. But that's not really the best part of it."]
-    ];
-  }else if(a.includes("ending")||a.includes("afterwards")){
-    headline="You like the kind that stays in your head.";
-    analysis="Fair enough. These aren't movies you finish and immediately forget.";
-    movies=[
-      ["Past Lives","You'll probably sit with this one for a while."],
-      ["About Time","Looks like a simple romance. It isn't just that."],
-      ["The Secret Life of Walter Mitty","More about life than romance. Good one when you need something different."]
-    ];
-  }else{
-    headline="Fine. I'm taking the risk.";
-    analysis="No clues. So I'm picking three anyway. One of these should work.";
-    movies=[
-      ["About Time","Just trust me on this one."],
-      ["The Lunchbox","Small story, good characters, very easy to get into."],
-      ["Begin Again","Music, people and a story that doesn't try too hard."]
-    ];
-  }
-
-  document.getElementById("headline").textContent=headline;
-  document.getElementById("analysis").textContent=analysis;
-  document.getElementById("movies").innerHTML=movies.map(m=>'<div class="movie"><strong>'+m[0]+'</strong><span>'+m[1]+'</span></div>').join("");
-}
-document.getElementById("again").onclick=()=>{
-  step=0;answers=[];
-  document.getElementById("result").style.display="none";
-  document.getElementById("quiz").style.display="block";
-  render();
-};
-document.getElementById("secret").onclick=()=>{
-  document.getElementById("secret").textContent="Also, I'm still blaming you for making me watch Voicemails for Isabelle.";
-};
-render();
+document.querySelectorAll(".item").forEach(item=>{
+  item.addEventListener("click",()=>item.classList.toggle("open"));
+});
 </script>
 </body>
 </html>
