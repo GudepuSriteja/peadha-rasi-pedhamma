@@ -3,109 +3,123 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Movie Recommendation Machine</title>
+<title>For your movie recommendations</title>
 <style>
 *{box-sizing:border-box}
-body{margin:0;min-height:100vh;display:grid;place-items:center;background:radial-gradient(circle at top,#20202a 0,#0c0c10 55%,#070709 100%);color:#f5f5f7;font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
-.card{width:min(92vw,620px);padding:34px 26px;text-align:center}
-.kicker{font-size:12px;letter-spacing:2px;text-transform:uppercase;color:#888;margin-bottom:14px}
-h1{font-size:clamp(30px,7vw,48px);line-height:1.05;margin:0 0 12px;letter-spacing:-1.5px}
-.sub{color:#999;line-height:1.5;font-size:15px;margin:0 auto 28px;max-width:470px}
-.question{font-size:23px;font-weight:700;margin:20px 0}
+body{margin:0;min-height:100vh;display:grid;place-items:center;background:#101014;color:#f5f5f5;font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+.card{width:min(92vw,600px);padding:34px 24px;text-align:center}
+.top{font-size:13px;color:#777;margin-bottom:18px}
+h1{font-size:clamp(31px,7vw,46px);line-height:1.08;margin:0 0 12px;letter-spacing:-1.3px}
+.intro{color:#999;font-size:16px;line-height:1.5;max-width:470px;margin:0 auto 30px}
+.progress{height:2px;background:#29292e;border-radius:10px;max-width:400px;margin:0 auto 30px}
+#bar{height:100%;width:25%;background:#eee;transition:.25s}
+.question{font-size:23px;font-weight:700;margin:20px 0 18px}
 .options{display:grid;gap:10px}
-button{width:100%;border:1px solid #303038;background:#17171d;color:#f5f5f7;border-radius:14px;padding:15px 16px;font-size:16px;cursor:pointer;transition:.18s}
-button:hover{transform:translateY(-2px);background:#22222a;border-color:#555}
-.progress{height:3px;background:#25252c;border-radius:10px;overflow:hidden;margin:0 auto 28px;max-width:420px}
-#bar{height:100%;width:25%;background:#fff;transition:.25s}
+button{width:100%;border:1px solid #303036;background:#18181d;color:#f5f5f5;border-radius:13px;padding:15px 16px;font-size:16px;cursor:pointer;transition:.15s}
+button:hover{transform:translateY(-2px);background:#222228}
 .result{display:none}
-.result h2{font-size:28px;margin:10px 0}
-.movie{padding:18px;margin:12px 0;background:#15151b;border:1px solid #292931;border-radius:16px;text-align:left}
+.result .top{margin-bottom:12px}
+.result h2{font-size:30px;margin:0 0 12px}
+.result-intro{color:#aaa;line-height:1.55;margin:0 auto 24px;max-width:480px}
+.movie{padding:17px 18px;margin:10px 0;background:#17171c;border:1px solid #29292f;border-radius:15px;text-align:left}
 .movie strong{font-size:18px}
-.movie span{display:block;color:#999;font-size:14px;margin-top:5px;line-height:1.45}
-.note{margin-top:26px;color:#aaa;font-size:14px;line-height:1.55}
-.hidden{display:none}
-#easter{margin-top:24px;font-size:12px;color:#555;cursor:pointer}
+.movie span{display:block;color:#999;font-size:14px;line-height:1.5;margin-top:5px}
+.bottom{color:#777;font-size:13px;line-height:1.5;margin:25px auto 18px}
+#again{margin-top:2px}
+#secret{margin-top:25px;color:#444;font-size:12px;cursor:pointer}
 </style>
 </head>
 <body>
 <main class="card">
-  <section id="quiz">
-    <div class="kicker">A highly scientific experiment</div>
-    <h1>Movie Recommendation Machine</h1>
-    <p class="sub">Because apparently normal movie recommendations weren't enough.</p>
-    <div class="progress"><div id="bar"></div></div>
-    <div id="question" class="question"></div>
-    <div id="options" class="options"></div>
-  </section>
 
-  <section id="result" class="result">
-    <div class="kicker">Analysis complete</div>
-    <h2 id="headline"></h2>
-    <p class="sub" id="analysis"></p>
-    <div id="movies"></div>
-    <p class="note">You don't actually want a movie.<br>You want to feel something.</p>
-    <button id="again">Run the analysis again</button>
-    <div id="easter">there may be one more thing here</div>
-  </section>
+<section id="quiz">
+  <div class="top">Okay, one small test.</div>
+  <h1>What kind of movie are you looking for?</h1>
+  <p class="intro">I know you've already given me enough movie recommendations, but I need to know what actually goes on in that head of yours.</p>
+  <div class="progress"><div id="bar"></div></div>
+  <div id="question" class="question"></div>
+  <div id="options" class="options"></div>
+</section>
+
+<section id="result" class="result">
+  <div class="top">Okay. I think I got you.</div>
+  <h2 id="headline"></h2>
+  <p id="analysis" class="result-intro"></p>
+  <div id="movies"></div>
+  <p class="bottom">Pick one. Watch it. Then tell me if I got it completely wrong.</p>
+  <button id="again">No, do it again</button>
+  <div id="secret">don't click this</div>
+</section>
+
 </main>
 
 <script>
 const questions=[
- {q:"What do you want to feel?",a:["Fall in love","Cry a little","Think about life at 2 AM","All of the above"]},
- {q:"How much emotional damage are you willing to take?",a:["Mild","Medium","Destroy me"]},
- {q:"What matters most in a story?",a:["Genuine people","Family","Love","The human side of things"]},
- {q:"Pick your ideal ending.",a:["Heartwarming","Bittersweet","Make me stare at the ceiling","I just want it to feel real"]}
+ {q:"What do you want the movie to leave you with?",a:["Warm and happy","A little emotional","Thinking about it afterwards","No idea, surprise me"]},
+ {q:"Which one gets you more?",a:["People being honest about what they feel","Family stuff","Two people slowly getting close","Just a really good story"]},
+ {q:"How emotional is too emotional?",a:["I'm fine","Depends on the movie","I can handle it","Why would I want less emotion?"]},
+ {q:"What makes you say 'that was actually good'?",a:["It felt real","The characters","The ending","I can't explain it, it just did"]},
 ];
 
 let step=0,answers=[];
-const qEl=document.getElementById("question");
-const optEl=document.getElementById("options");
+const q=document.getElementById("question");
+const options=document.getElementById("options");
 const bar=document.getElementById("bar");
 
 function render(){
-  const q=questions[step];
-  qEl.textContent=q.q;
-  optEl.innerHTML="";
-  q.a.forEach((answer,i)=>{
+  q.textContent=questions[step].q;
+  options.innerHTML="";
+  questions[step].a.forEach(answer=>{
     const b=document.createElement("button");
     b.textContent=answer;
-    b.onclick=()=>choose(i,answer);
-    optEl.appendChild(b);
+    b.onclick=()=>choose(answer);
+    options.appendChild(b);
   });
   bar.style.width=((step+1)/questions.length*100)+"%";
 }
-function choose(i,answer){
-  answers.push(answer);
+function choose(answer){
+  answers.push(answer.toLowerCase());
   step++;
-  if(step<questions.length) render();
-  else finish();
+  step<questions.length ? render() : finish();
 }
 function finish(){
   document.getElementById("quiz").style.display="none";
   document.getElementById("result").style.display="block";
 
-  const all=answers.join(" ").toLowerCase();
-  let movies;
-  let headline="Your taste is dangerously specific.";
-  let analysis="You like stories where people actually feel things, say what they mean, and somehow leave you thinking about the characters after the movie ends.";
+  const a=answers.join(" ");
+  let headline,analysis,movies;
 
-  if(all.includes("destroy")||all.includes("ceiling")||all.includes("cry")){
+  if(a.includes("honest")||a.includes("real")||a.includes("emotion")){
+    headline="Yeah. This makes sense.";
+    analysis="You seem to like movies where people actually say what they feel instead of everything being unnecessarily complicated. So I'd go with these.";
     movies=[
-      ["Voicemails for Isabelle","If this one is still running in your head, apparently the machine has decided not to fight it."],
-      ["About Time","Love, family, ordinary days, and the kind of ending that stays with you."],
-      ["Past Lives","Quiet, complicated, and very human."]
+      ["About Time","There's romance, but the family side of it is what makes it hit differently."],
+      ["The Lunchbox","Very simple story. Very normal people. Somehow you end up caring a lot."],
+      ["Past Lives","Quiet movie, complicated feelings. You'll probably think about it after."]
     ];
-  }else if(all.includes("family")||all.includes("genuine")||all.includes("human")){
+  }else if(a.includes("family")||a.includes("characters")){
+    headline="Okay, I've got a few for you.";
+    analysis="You seem to care more about the people in the story than whether the movie is trying to be impressive.";
     movies=[
-      ["The Lunchbox","Two strangers, ordinary lives, and a connection that grows in the smallest way."],
-      ["Little Miss Sunshine","Messy family, real people, and a ridiculous amount of heart."],
-      ["The Intouchables","Friendship, humour and two people changing each other's lives."]
+      ["Little Miss Sunshine","A completely dysfunctional family that somehow feels very real."],
+      ["The Intouchables","Funny, warm and built around two people who genuinely change each other."],
+      ["About Time","Yes, it's a love story. But that's not really the best part of it."]
+    ];
+  }else if(a.includes("ending")||a.includes("afterwards")){
+    headline="You like the kind that stays in your head.";
+    analysis="Fair enough. These aren't movies you finish and immediately forget.";
+    movies=[
+      ["Past Lives","You'll probably sit with this one for a while."],
+      ["About Time","Looks like a simple romance. It isn't just that."],
+      ["The Secret Life of Walter Mitty","More about life than romance. Good one when you need something different."]
     ];
   }else{
+    headline="Fine. I'm taking the risk.";
+    analysis="No clues. So I'm picking three anyway. One of these should work.";
     movies=[
-      ["About Time","Romance, family and learning to appreciate ordinary life."],
-      ["Begin Again","Music, people finding themselves, and a connection that feels natural."],
-      ["The Secret Life of Walter Mitty","A little more life, a little less overthinking."]
+      ["About Time","Just trust me on this one."],
+      ["The Lunchbox","Small story, good characters, very easy to get into."],
+      ["Begin Again","Music, people and a story that doesn't try too hard."]
     ];
   }
 
@@ -113,9 +127,14 @@ function finish(){
   document.getElementById("analysis").textContent=analysis;
   document.getElementById("movies").innerHTML=movies.map(m=>'<div class="movie"><strong>'+m[0]+'</strong><span>'+m[1]+'</span></div>').join("");
 }
-document.getElementById("again").onclick=()=>{step=0;answers=[];document.getElementById("result").style.display="none";document.getElementById("quiz").style.display="block";render()};
-document.getElementById("easter").onclick=()=>{
-  document.getElementById("easter").textContent="P.S. You started this whole problem by making Sri watch Voicemails for Isabelle.";
+document.getElementById("again").onclick=()=>{
+  step=0;answers=[];
+  document.getElementById("result").style.display="none";
+  document.getElementById("quiz").style.display="block";
+  render();
+};
+document.getElementById("secret").onclick=()=>{
+  document.getElementById("secret").textContent="Also, I'm still blaming you for making me watch Voicemails for Isabelle.";
 };
 render();
 </script>
